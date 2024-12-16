@@ -4,6 +4,7 @@
 
 ### Install kube-vip
 Documentation: https://kube-vip.io
+
 Create file `kube-vip.cnf`
 ```
 config:

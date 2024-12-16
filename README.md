@@ -29,6 +29,17 @@ Load IPVS modules without rebooting
 sudo systemctl restart systemd-modules-load.service
 ```
 
+### Install the nodes
+Install the nodes
+```
+sudo snap install microk8s --classic --channel=1.32
+```
+
+Create cluster
+```
+microk8s add-node
+```
+Issue `microk8s join` commands that you get from previous command on **other** nodes.
 
 
 

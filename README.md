@@ -23,10 +23,32 @@ env:
 
 
 ```
-microk8s helm repo add kube-vip https://kube-vip.github.io/helm-charts
-microk8s helm repo update
-microk8s helm install kube-vip kube-vip/kube-vip --namespace kube-system --create-namespace -f kube-vip.cnf
+microk8s helm repo add kube-vip https://kube-vip.github.io/helm-charts --force-update
 ```
+
+```
+microk8s helm install \
+  kube-vip kube-vip/kube-vip \
+  --namespace kube-system \
+  --create-namespace \
+  -f kube-vip.cnf
+```
+
+### Install cert-manager
+Documentation: https://cert-manager.io/docs/installation/helm/
+```
+microk8s helm repo add jetstack https://charts.jetstack.io --force-update
+```
+
+```
+microk8s helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.16.2 \
+  --set crds.enabled=true
+```
+
 
 
 ### Setup

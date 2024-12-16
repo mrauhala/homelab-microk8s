@@ -101,7 +101,8 @@ microk8s helm install \
   longhorn longhorn/longhorn \
   --namespace longhorn-system \
   --create-namespace \
-  --version 1.7.2
+  --version 1.7.2 \
+  --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet"
 ```
 
 ### Setup

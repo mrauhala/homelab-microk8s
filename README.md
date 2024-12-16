@@ -90,7 +90,19 @@ microk8s helm install \
   --set crds.enabled=true
 ```
 
+### Install longhorn
+Documentation: https://longhorn.io/docs/1.7.2/deploy/install/install-with-helm/
+```
+microk8s helm repo add longhorn https://charts.longhorn.io --force-update
+```
 
+```
+microk8s helm install \
+  longhorn longhorn/longhorn \
+  --namespace longhorn-system \
+  --create-namespace \
+  --version 1.7.2
+```
 
 ### Setup
 Create alias for `microk8s kubectl`

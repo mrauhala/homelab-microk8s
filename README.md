@@ -15,6 +15,21 @@ This tool is required for configuring load balancing using IPVS (IP Virtual Serv
 ```
 sudo apt install -y ipvsadm
 ```
+Edit `/etc/modules-load.d/ipvs.conf`
+```
+ip_vs
+ip_vs_rr
+ip_vs_wrr
+ip_vs_sh
+nf_conntrack
+```
+
+Load IPVS modules without rebooting 
+```
+sudo systemctl restart systemd-modules-load.service
+```
+
+
 
 
 ### Install kube-vip

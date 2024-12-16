@@ -2,6 +2,21 @@
 
 ## Installation
 
+### Prepare the nodes
+
+#### Install nfs-common
+This package is necessary for shared storage over the network, which enables distributed applications to access the same storage from multiple nodes.
+```
+sudo apt install -y nfs-common
+```
+
+#### Install ipvsadm
+This tool is required for configuring load balancing using IPVS (IP Virtual Server), which is more efficient for handling traffic across Kubernetes nodes.
+```
+sudo apt install -y ipvsadm
+```
+
+
 ### Install kube-vip
 Documentation: https://kube-vip.io
 

@@ -52,16 +52,15 @@ microk8s helm install \
 
 
 ### Setup
-
-Add to `.bash_aliases`
-```
-alias kubectl='microk8s kubectl'
-```
-or
+Create alias for `microk8s kubectl`
 ```
 sudo snap alias microk8s.kubectl kubectl
 ```
 
+Create alias for `microk8s helm`
+```
+sudo snap alias microk8s.helm helm
+```
 
 ## Upgrade microk8s
 ```

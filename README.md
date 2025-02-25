@@ -123,8 +123,11 @@ helm upgrade --install \
   --set ingress.enabled=true \
   --set ingress.ingressClassName=nginx \
   --set ingress.annotations."nginx\.ingress\.kubernetes\.io/backend-protocol"=HTTPS \
-  --set ingress.annotations."cert-manager\.io/cluster-issuer"=letsencrypt  --set ingress.hosts\[0\].host=portainer.lab.rauhalat.org \
-  --set ingress.hosts\[0\].paths\[0\].path="/" --set ingress.tls\[0\].hosts\[0\]=portainer.lab.rauhalat.org --set ingress.tls\[0\].secretName=portainer-ingress-tls
+  --set ingress.annotations."cert-manager\.io/cluster-issuer"=letsencrypt \
+  --set ingress.hosts\[0\].host=portainer.lab.rauhalat.org \
+  --set ingress.hosts\[0\].paths\[0\].path="/" \
+  --set ingress.tls\[0\].hosts\[0\]=portainer.lab.rauhalat.org \
+  --set ingress.tls\[0\].secretName=portainer-ingress-tls
 ```
 
 ### Setup

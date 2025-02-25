@@ -105,6 +105,28 @@ microk8s helm install \
   --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet"
 ```
 
+### Install portainer
+Documentation: https://docs.portainer.io/start/install-ce/server/kubernetes/baremetal
+
+```
+helm repo add portainer https://portainer.github.io/k8s/ --force-update
+```
+
+```
+helm upgrade --install \
+  portainer portainer/portainer
+  --namespace portainer \
+  --create-namespace \
+  --set service.type=ClusterIP \
+  --set tls.force=true \
+  --set image.tag=lts \
+  --set ingress.enabled=true \
+  --set ingress.ingressClassName=nginx \
+  --set ingress.annotations."nginx\.ingress\.kubernetes\.io/backend-protocol"=HTTPS \
+  --set ingress.annotations."cert-manager\.io/cluster-issuer"=letsencrypt  --set ingress.hosts\[0\].host=portainer.lab.rauhalat.org \
+  --set ingress.hosts\[0\].paths\[0\].path="/" --set ingress.tls\[0\].hosts\[0\]=portainer.lab.rauhalat.org --set ingress.tls\[0\].secretName=portainer-ingress-tls
+```
+
 ### Setup
 Create alias for `microk8s kubectl`
 ```

@@ -78,7 +78,7 @@ microk8s helm install \
 ### Install cert-manager
 Documentation: https://cert-manager.io/docs/installation/helm/
 ```
-microk8s helm repo add jetstack https://charts.jetstack.io --force-update
+helm repo add jetstack https://charts.jetstack.io --force-update
 ```
 
 ```
@@ -93,7 +93,7 @@ microk8s helm install \
 ### Install longhorn
 Documentation: https://longhorn.io/docs/1.8.1/deploy/install/install-with-helm/
 ```
-microk8s helm repo add longhorn https://charts.longhorn.io --force-update
+helm repo add longhorn https://charts.longhorn.io --force-update
 ```
 
 ```

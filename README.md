@@ -103,7 +103,12 @@ helm upgrade --install \
   --create-namespace \
   --version 1.8.1 \
   --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet" \
-  --set longhornUI.replicas=1
+  --set longhornUI.replicas=1 \
+  --set ingress.enabled=true \
+  --set ingress.host=longhorn.lab.rauhalat.org \
+  --set ingress.tls=true \
+  --set ingress.annotations."cert-manager\.io/cluster-issuer"=letsencrypt \
+  --set ingress.tlsSecret=longhorn-ingress-tls
 ```
 
 ### Install portainer
@@ -149,7 +154,3 @@ sudo snap refresh microk8s --channel 1.32/stable
 sudo microk8s kubectl uncordon node-a
 ```
 
-## Upgrade longhorn
-```
-helm upgrade longhorn longhorn/longhorn --namespace longhorn-system --version 1.8.1 --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet"
-```

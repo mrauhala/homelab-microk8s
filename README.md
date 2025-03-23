@@ -91,18 +91,19 @@ microk8s helm install \
 ```
 
 ### Install longhorn
-Documentation: https://longhorn.io/docs/1.7.2/deploy/install/install-with-helm/
+Documentation: https://longhorn.io/docs/1.8.1/deploy/install/install-with-helm/
 ```
 microk8s helm repo add longhorn https://charts.longhorn.io --force-update
 ```
 
 ```
-microk8s helm install \
+helm upgrade --install \
   longhorn longhorn/longhorn \
   --namespace longhorn-system \
   --create-namespace \
-  --version 1.7.2 \
-  --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet"
+  --version 1.8.1 \
+  --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet" \
+  --set longhornUI.replicas=1
 ```
 
 ### Install portainer
@@ -114,7 +115,7 @@ helm repo add portainer https://portainer.github.io/k8s/ --force-update
 
 ```
 helm upgrade --install \
-  portainer portainer/portainer
+  portainer portainer/portainer \
   --namespace portainer \
   --create-namespace \
   --set service.type=ClusterIP \

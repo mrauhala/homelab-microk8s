@@ -82,15 +82,18 @@ helm repo add jetstack https://charts.jetstack.io --force-update
 ```
 
 ```
-microk8s helm install \
+helm upgrade --install \
   cert-manager jetstack/cert-manager \
+  --version v1.16.2 \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.16.2 \
   --set crds.enabled=true
 ```
 
-### Install longhorn
+### INSTALL LONGHORN
+> [!NOTE]
+> This command is idempotent: if installed do upgrade else do install
+
 Documentation: https://longhorn.io/docs/1.8.1/deploy/install/install-with-helm/
 ```
 helm repo add longhorn https://charts.longhorn.io --force-update
@@ -99,9 +102,10 @@ helm repo add longhorn https://charts.longhorn.io --force-update
 ```
 helm upgrade --install \
   longhorn longhorn/longhorn \
+  --version 1.8.1 \
   --namespace longhorn-system \
   --create-namespace \
-  --version 1.8.1 \
+  --repo https://charts.longhorn.io
   --set csi.kubeletRootDir="/var/snap/microk8s/common/var/lib/kubelet" \
   --set longhornUI.replicas=1 \
   --set ingress.enabled=true \

@@ -115,7 +115,9 @@ helm upgrade --install \
   --set ingress.tlsSecret=longhorn-ingress-tls
 ```
 
-### Install portainer
+### INSTALL PORTAINER
+> [!NOTE]
+> This command is idempotent: if installed do upgrade else do install
 Documentation: https://docs.portainer.io/start/install-ce/server/kubernetes/baremetal
 
 ```
@@ -127,6 +129,7 @@ helm upgrade --install \
   portainer portainer/portainer \
   --namespace portainer \
   --create-namespace \
+  --repo https://portainer.github.io/k8s/ \
   --set service.type=ClusterIP \
   --set tls.force=true \
   --set image.tag=lts \

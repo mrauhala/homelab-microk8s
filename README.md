@@ -55,7 +55,7 @@ env:
   vip_arp: "true"  # mandatory for L2 mode
   lb_enable: "true"
   lb_port: "16443" # changed as microk8s uses 16443 instead of 6443
-  vip_cidr: "24"
+  vip_subnet: "24"
   cp_enable: "true" # enable control plane load balancing
   svc_enable: "true" # enable user plane load balancing
   vip_leaderelection: "true" # mandatory for L2 mode
@@ -68,7 +68,7 @@ microk8s helm repo add kube-vip https://kube-vip.github.io/helm-charts --force-u
 ```
 
 ```
-microk8s helm install \
+microk8s helm upgrade --install \
   kube-vip kube-vip/kube-vip \
   --namespace kube-system \
   --create-namespace \

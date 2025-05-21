@@ -84,7 +84,7 @@ helm repo add jetstack https://charts.jetstack.io --force-update
 ```
 helm upgrade --install \
   cert-manager jetstack/cert-manager \
-  --version v1.17.0 \
+  --version v1.17.2 \
   --namespace cert-manager \
   --create-namespace \
   --set crds.enabled=true
